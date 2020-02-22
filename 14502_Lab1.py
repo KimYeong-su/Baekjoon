@@ -29,15 +29,15 @@ for x1 in range(N):
         if base[x1][y1]==0:
             for x2 in range(N):
                 for y2 in range(M):
-                    if x1!=x2 or y1!=y2:
+                    if (x1,y1)!=(x2,y2):
                         if base[x2][y2]==0:
                             for x3 in range(N):
                                 for y3 in range(M):
-                                    if x1!=x3 or x2!=x3 or y1!=y3 or y2!=y3:
+                                    if (x1,y1)!=(x3,y3) and (x2,y2)!=(x3,y3):
                                         if base[x3][y3]==0:
                                             p.append((x1,y1,x2,y2,x3,y3))
-
-max=3
+# print(len(p))
+max=0
 while len(p)!=0:
     x1,y1,x2,y2,x3,y3 = p.pop()
     base[x1][y1], base[x2][y2], base[x3][y3] = 3, 3, 3
