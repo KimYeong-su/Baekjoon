@@ -1,22 +1,15 @@
 N = int(input())
-result = [i for i in range(10)]
+
 cnt = -1
-while True:
+result = [i for i in range(10)]
+
+while result:
     num = result.pop(0)
     cnt += 1
     if cnt == N:
-        flag = True
-        break
+        print(num)
+        exit()
     for i in range(10):
-        if i < num%10:
-            temp = num*10 + i
-            result.append(temp)
-        else:
-            break
-    if not result:
-        flag = False
-        break
-if flag:
-    print(num)
-else:
-    print(-1)
+        if num%10 <= i: break
+        result.append(num*10 + i)
+print(-1)
