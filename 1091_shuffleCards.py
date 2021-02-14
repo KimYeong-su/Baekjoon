@@ -9,32 +9,32 @@ for idx, p in enumerate(P):
     else:
         check[p] = [idx]
 
-print(check)
+if len(check[0]) == len(check[1]) == len(check[2]):
+    pass
+else:
+    print(-1)
+    exit()
 
-# answer = 0
-# tmp = []
-# for s in S:
-#     tmp.append(s)
+cards = [x for x in range(N)]
+case = [x for x in range(N)]
+answer = 0
 
-# case = []
+while True:
+    for idx,card in enumerate(cards):
+        if card not in check[idx%3]:
+            break
+    else:
+        print(answer)
+        break
 
-# while True:
 
-#     for idx, t in enumerate(tmp):
-#         if t not in check[idx]:
-#             break
-#     else:
-#         print(answer)
-#         exit()
-#     if tmp in case:
-#         print(-1)
-#         exit()
-#     else:
-#         case.append(tmp)
+    tmp = [0] * N
+    for i in range(N):
+        tmp[S[i]] = cards[i]
+
+    if tmp == case:
+        print(-1)
+        break
     
-#     tmp1 = [0] * N
-#     for t in tmp:
-#         tmp1[t] = t
-
-#     tmp = tmp1
-#     answer += 1    
+    cards = tmp
+    answer += 1
