@@ -18,15 +18,16 @@ answer = float('inf')
 def check(base, dirs, x, y):
     tmp = deepcopy(base)
     for d in dirs:
+        row, col = x, y
         while True:
-            nx = x + directions[d][0]
-            ny = y + directions[d][1]
-            if 0<=nx<N and 0<=ny<M:
-                if tmp[nx][ny] == 6:break
-                if tmp[nx][ny] == 0:
-                    tmp[nx][ny] = '#'
-                x = nx
-                y = ny
+            nr = row + directions[d][0]
+            nc = col + directions[d][1]
+            if 0<=nr<N and 0<=nc<M:
+                if tmp[nr][nc] == 6:break
+                if tmp[nr][nc] == 0:
+                    tmp[nr][nc] = '#'
+                row = nr
+                col = nc
             else:
                 break
     return tmp
