@@ -7,19 +7,45 @@ maps = [[0]*C for _ in range(R)]
 queue = []
 for _ in range(M): # 1:위, 2: 아래, 3: 오른쪽, 4: 왼쪽
     r,c,s,d,z = map(int, input().rstrip('\n').split())
-    maps[r-1][c-1] = (s,d,z)
+    if r-1==0 and d==1:
+        maps[r-1][c-1] = (s,2,z)
+    elif r-1==R-1 and d==2:
+        maps[r-1][c-1] = (s,1,z)
+    elif c-1==0 and d==4:
+        maps[r-1][c-1] = (s,3,z)
+    elif c-1==C-1 and d==3:
+        maps[r-1][c-1] = (s,4,z)
+    else:
+        maps[r-1][c-1] = (s,d,z)
     queue.append((r-1,c-1))
 
 def next_position(r,c,s,d):
-    if d == 1:
-        
-    elif d == 2:
-        
-    elif d == 3:
-        
-    elif d == 4:
-        
-            
+    if d==3 or d==4:
+        remain = s%(C*2-2)
+        while remain:
+            if d==3:
+                c += 1
+                remain -= 1
+                if c==C-1:
+                    d=4
+            else:
+                c -= 1
+                remain -= 1
+                if c==0:
+                    d=3
+    else:
+        remain = s%(R*2-2)
+        while remain:
+            if d == 1:
+                r -= 1
+                remain -= 1
+                if r == 0:
+                    d=2
+            else:
+                r += 1
+                remain -= 1
+                if r == R-1:
+                    d=1
     return r, c, s, d
 
 fishing = 0
